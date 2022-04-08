@@ -18,7 +18,12 @@ const MovieForm = (props) => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
-                setMovie(res.data);
+                setMovie({
+                    title: res.data.title,
+                    director: res.data.director,
+                    metascore: res.data.metascore,
+                    stars: [res.data.stars]
+                });
             })
             .catch(err => {
                 console.log(err);
